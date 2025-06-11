@@ -22,10 +22,10 @@ def main():
     command = [
         "oidv6", "downloader", language,
         "--dataset", dataset_dir,
-        "--type_data", "train",
+        "--type_data", type_data,
         "--classes"
     ] + classes + [
-        "--limit", "700",
+        "--limit", str(image_limit),
         "--multi_classes",
         "--yes"
     ]
@@ -39,62 +39,13 @@ def main():
         result = subprocess.run(command, check=True, capture_output=True, text=True)
         print(result.stdout)
     except subprocess.CalledProcessError as err:
-        print("Train İndirme sırasında hata oluştu:")
-        print(err.stderr)
-    except Exception as err:
-        print(f"Beklenmeyen hata: {err}")
-
-        # Komutu oluştur
-    command = [
-        "oidv6", "downloader", language,
-        "--dataset", dataset_dir,
-        "--type_data", "validation",
-        "--classes"
-    ] + classes + [
-        "--limit", "200",
-        "--multi_classes",
-        "--yes"
-    ]
-
-    # Komutu yazdır (debug için)
-    print("Çalıştırılan komut:")
-    print(" ".join(command))
-
-    # Komutu çalıştır
-    try:
-        result = subprocess.run(command, check=True, capture_output=True, text=True)
-        print(result.stdout)
-    except subprocess.CalledProcessError as err:
-        print("Valid İndirme sırasında hata oluştu:")
-        print(err.stderr)
-    except Exception as err:
-        print(f"Beklenmeyen hata: {err}")
-
-        # Komutu oluştur
-    command = [
-        "oidv6", "downloader", language,
-        "--dataset", dataset_dir,
-        "--type_data", "test",
-        "--classes"
-    ] + classes + [
-        "--limit", "100",
-        "--multi_classes",
-        "--yes"
-    ]
-
-    # Komutu yazdır (debug için)
-    print("Çalıştırılan komut:")
-    print(" ".join(command))
-
-    # Komutu çalıştır
-    try:
-        result = subprocess.run(command, check=True, capture_output=True, text=True)
-        print(result.stdout)
-    except subprocess.CalledProcessError as err:
-        print("Test İndirme sırasında hata oluştu:")
+        print("İndirme sırasında hata oluştu:")
         print(err.stderr)
     except Exception as err:
         print(f"Beklenmeyen hata: {err}")
 
 if __name__ == "__main__":
     main()
+
+    
+#oidv6 downloader en --dataset OIDv6_dataset --type_data all --classes Laptop "Tablet computer" "Computer keyboard" "Computer monitor" "Computer mouse" Pen "Pencil case" "Pencil sharpener" Stapler Book "Mobile phone" Calculator "Adhesive tape" Headphones Flashlight Bottle Mug "Facial tissue holder" "Toilet paper" "Paper towel" Glasses Bowl Box Camera Watch Coin "Personal care" Cream Eraser Flute Fork "Kitchen knife" Spoon Glove IPod Necklace Ruler Scissors Screwdriver Snack Toothbrush "Drinking straw" --limit 800 --multi_classes --yes
