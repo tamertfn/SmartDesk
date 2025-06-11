@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SmartDesk: Real-Time Object Detection App</string>
+    <string name="gpu">GPU</string>
+</resources>
