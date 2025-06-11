@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  yolo11_server:
+    build: .
+    container_name: yolo11_server
+    ports:
+      - "8000:8000"
+    shm_size: "2gb"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    runtime: nvidia
+    stdin_open: true
+    tty: true

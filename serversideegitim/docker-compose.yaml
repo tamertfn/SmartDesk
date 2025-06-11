@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  yolo11_training:
+    shm_size: '4gb'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: yolo11_training
+    volumes:
+      - ./tamer:/workspace/tamer  # Roboflow dataset mount
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    runtime: nvidia
+    stdin_open: true
+    tty: true
+

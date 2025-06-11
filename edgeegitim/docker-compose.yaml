@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  smartdesk:
+    shm_size: '4g'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: smartdesk-yolov8:latest
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/workspace
+
